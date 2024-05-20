@@ -1,0 +1,9 @@
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.2); /* Adjust the alpha value for transparency */
+  backdrop-filter: blur(10px); /* Adjust the blur value as needed */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Border color with transparency */
+  border-radius: 12px; /* Adjust border-radius for rounded corners */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+}
