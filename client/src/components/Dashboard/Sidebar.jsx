@@ -16,7 +16,7 @@ import { IoSchoolSharp } from "react-icons/io5";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { GiNotebook } from "react-icons/gi";
 import { IoIosPeople } from "react-icons/io";
-
+import { MdEventAvailable } from "react-icons/md";
 import { FaMedal } from "react-icons/fa";
 import { GiMedallist } from "react-icons/gi";
 
@@ -178,11 +178,11 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                   className="flex font-heading_font  items-center cursor-pointer"
                   onClick={() => setalumniShowDropdown(!alumnishowDropDown)}
                 >
-                  <GiPodiumWinner
+                  <MdEventAvailable
                     className="h-5 w-5 inline-block "
                     aria-hidden="true"
                   />
-                  <h1 className="ml-2 text-gray-600 ">Alumni</h1>
+                  <h1 className="ml-2 text-gray-600 ">Event</h1>
                   <IoIosArrowDropdownCircle
                     className="h-5 w-5 ml-2"
                     aria-hidden="true"
@@ -199,7 +199,7 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                       }`}
                     >
                       <IoSchoolSharp className="h-4 w-5" aria-hidden="true" />
-                      <span className="mx-2 text-sm font-medium"> Create Alumni</span>
+                      <span className="mx-2 text-sm font-medium"> Create Event</span>
                     </NavLink>
 
                     <NavLink
@@ -213,7 +213,7 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                       <FaPencilRuler className="h-4 w-5" aria-hidden="true" />
                       <span className="mx-2 text-sm font-medium">
                         {" "}
-                        Update Alumni
+                        Update Event
                       </span>
                     </NavLink>
                   </div>

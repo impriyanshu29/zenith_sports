@@ -7,9 +7,8 @@ import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-function Family() {
-  const [posts, setPosts] = useState([]);
-  const [fullPost, setFullPost] = useState([]);
+function Events() {
+ const[events,setEvents] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const[searchValue,setSearchValue] = useState("")
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ const handleSearch = (e) =>{
     console.log('====================================');
     const urlParams =new URLSearchParams(location.search);
     console.log(urlParams)
-      urlParams.set('searchAlumni', searchValue)
+      urlParams.set('searchEvent', searchValue)
      
       const search = urlParams.toString()
       navigate(`/search?${search}`)
@@ -39,11 +38,11 @@ const handleSearch = (e) =>{
   };
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch(`/api/alumni/getalumni?page=${currentPage}`);
+      const res = await fetch(`/api/event/getEvent?page=${currentPage}`);
       const data = await res.json();
       if (res.ok) {
-        setPosts(data.message.alumni.alumnis);
-        setFullPost(data.message.alumni);
+        setEvents(data)
+   
       }
     };
     fetchPosts();
@@ -53,8 +52,6 @@ const handleSearch = (e) =>{
     <div>
       <div className="mx-auto max-w-7xl px-2 ">
         <div className="flex flex-col space-y-8 pb-10 pt-12 px-2 md:pt-24">
-          
-          
           <p className="text-center font-heading_font text-3xl text-[#27374D] dark:text-[#DDE6ED] md:text-5xl md:leading-10">
           Proud Past, Bright Futures :  <span className="text-sky-700 dark:text-sky-500">  Alumni Showcase</span> 
 </p>
@@ -70,7 +67,7 @@ const handleSearch = (e) =>{
                 className="flex h-10 w-full rounded-md border border-gray-500 text-gray-500 dark:bg-gray-300   bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
                 value={searchValue}
-                placeholder="Search Alumni"
+                placeholder="Search Events"
                 onChange={(e) => setSearchValue(e.target.value)}
               ></input>
               <button
@@ -99,20 +96,20 @@ const handleSearch = (e) =>{
         {/* posts */}
 
         <div className="grid   gap-1 gap-y-10 py-6 md:grid-cols-2 lg:grid-cols-3 ">
-          {posts.map((post) => (
+          {events?.data?.map((post) => (
             <div key={post._id} className="w-[320px] mx-auto border cursor-pointer  dark:glass-container bg-gray-100 dark:bg-[#131315] rounded-lg shadow-md">
               <img
                 src={post.image}
-                alt={post.firstname}
+                alt={post.eventName}
                 className="h-[290px] rounded-md w-full  rounded-t-md object-fill "
               />
               <div className="p-4">
-                <Link to={`/alumni/${post.slug}`}>
+                <Link to={`/events/${post.slug}`}>
                   <h1 className="inline-flex items-center text-gray-700 dark:text-gray-200 text-lg font-semibold">
-                    About {post.firstname}&nbsp; <FaArrowUpRightFromSquare />
+                    About {post.eventName}&nbsp; <FaArrowUpRightFromSquare />
                   </h1>
                 </Link>
-                <p className="mt-3 text-sm text-gray-600">{(post.about).slice(0,60)}{"..."}</p>
+                <p className="mt-3 text-sm text-gray-600">{(post.description).slice(0,60)}{"..."}</p>
                 <div className="mt-4 flex flex-row gap-1 ">
                   <Link to={post.instagram}>
                     <span className="flex items-center mb-2 mr-2 rounded-full bg-gray-200 dark:bg-gray-400 text-gray-700   px-3 py-1 text-xs font-semibold ">
@@ -128,7 +125,7 @@ const handleSearch = (e) =>{
                   </Link>
                   <Link to ={`/search?batch=${post.batch}`}>
                   <span className="flex items-center mb-2 mr-2 rounded-full bg-gray-200 dark:bg-gray-400 text-gray-700    px-3 py-1 text-xs font-semibold ">
-                    {post.batch}
+                    {post.eventCategory}
                   </span>
                   </Link>
                 </div>
@@ -150,7 +147,7 @@ const handleSearch = (e) =>{
             <div className="hidden md:block text-gray-700">
               <p>
                 showing <strong>1</strong> to <strong>6</strong> of{" "}
-                <strong>{fullPost.totalAlumni}</strong> results
+                <strong>{events?.data?.length}</strong> results
               </p>
             </div>
             <div className="space-x-2">
@@ -176,4 +173,4 @@ const handleSearch = (e) =>{
   );
 }
 
-export default Family;
+export default Events;

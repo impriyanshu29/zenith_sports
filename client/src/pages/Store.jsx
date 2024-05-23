@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 
 import { useState } from 'react'
 
-function Achievments() {
+function Store() {
 
   const [events, setEvents] = useState([])
   useEffect(() => {
@@ -78,4 +78,4 @@ const Event = ({ year, title }) => {
   );
 };
 
-export default Achievments
+export default Store

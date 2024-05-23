@@ -8,23 +8,23 @@ import { Modal, Button } from "flowbite-react";
 
 function UpdatePost() {
   const { currentUser } = useSelector((state) => state.user);
-  const [fullAlumniList, setfullAlumniList] = useState([]);
-  const [alumniList, setAlumniList] = useState([]);
+
+  const [eventList, setEventList] = useState([]);
   const [showMore, setshowMore] = useState(true);
   const [showModel, setShowModel] = useState(false);
-  const [AlumniIdDelete, setAlumniIdDelete] = useState('')
+  const [eventIdDelete, setEventIdDelete] = useState('')
  
   useEffect(() => {
-    const fetchAlumnis = async () => {
+    const fetchEvents = async () => {
       try {
         const res = await fetch(
-          "/api/alumni/getalumni"
+          "/api/event/getEvent"
         );
         const data = await res.json();
-
+        console.log(data);
         if (res.ok) {
-          setAlumniList(data.message.alumni.alumnis);
-          setfullAlumniList(data.message.alumni);
+          setEventList(data)
+          
           if (data.message.alumni.totalPost < 6) {
             setshowMore(false);
           }
@@ -37,40 +37,24 @@ function UpdatePost() {
     };
 
     if (currentUser.message.user.isAdmin) {
-      fetchAlumnis();
+      fetchEvents();
     } 
   }, [currentUser.message.user._id, currentUser.message.user.isAdmin]); 
 
-
-
-  const handleShowMore = async () => {
-    const startIndex = alumniList.length;
-    try {
-      const res = await fetch(`/api/alumni/getalumni?startIndex=${startIndex}`);
-      const data = await res.json();
-      if (res.ok) {
-        if (data.message.alumni.alumnis.length < 6) {
-          setshowMore(false);
-        }
-        setAlumniList((prev) => [...prev, ...data.message.alumni.alumnis]);
-      }
-   
-  
-    } catch (error) {
-      console.log("====================================");
-      console.log(error);
-      console.log("====================================");
-    }
-  };
+console.log(eventList)
+console.log(eventList?.data?.length)
 
   const handleDeletePost = async() => {
     setShowModel(false);
   }
+
+
+
   const handleConfirmDelete = async()=>{
     setShowModel(false)
    
     try {
-        const res = await fetch (`/api/alumni/deletealumni/${currentUser.message.user._id}/${AlumniIdDelete}`,
+        const res = await fetch (`/api/event/deleteEvent/${currentUser.message.user._id}/${eventIdDelete}`,
       {
             method :'DELETE'
         });
@@ -81,7 +65,7 @@ function UpdatePost() {
             console.log(data.error);
         }
         else{
-            setAlumniList((prev) => prev.filter((post) => post._id !== AlumniIdDelete))
+            setEventList((prev) => prev.filter((post) => post._id !== eventIdDelete))
             setShowModel(false)
         }
     } catch (error) {
@@ -95,7 +79,7 @@ setShowModel(false)
 
   return (
     <>
-      {currentUser.message.user.isAdmin && fullAlumniList.totalAlumni > 0 ? (
+      {currentUser.message.user.isAdmin && eventList?.data?.length > 0 ? (
         <section className="mx-auto w-full max-w-7xl px-4 py-4 ">
           <div className=" flex flex-col bg-gray-100 dark:bg-[#131315] rounded-lg shadow-md">
             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -108,20 +92,25 @@ setShowModel(false)
                           scope="col"
                           className="px-4 py-3.5 text-left text-md font-heading_font  dark:text-gray-200 text-gray-700"
                         >
-                          <span>Alumni</span>
+                          <span>Event</span>
+                        </th> <th
+                          scope="col"
+                          className="px-4 py-3.5 text-left text-md font-heading_font  dark:text-gray-200 text-gray-700"
+                        >
+                          Event Date
                         </th>
                         <th
                           scope="col"
                           className="px-12 py-3.5 text-left  text-md font-heading_font  dark:text-gray-200 text-gray-700"
                         >
-                          About
+                          Event Organizer
                         </th>
 
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-left text-md font-heading_font   dark:text-gray-200 text-gray-700"
                         >
-                          Branch
+                        Event Venue
                         </th>
 
                         <th scope="col" className="relative px-4 py-3.5">
@@ -134,12 +123,12 @@ setShowModel(false)
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-[#131315] dark:glass-container   bg-gray-100 dark:bg-[#131315] ">
-                      {alumniList.map((alumni) => (
+                      {eventList?.data?.map((alumni) => (
                         <tr key={alumni._id}>
                           <td className="whitespace-nowrap px-4 py-4">
                             <div className="flex items-center">
                               <div className="h-14 w-14 flex-shrink-0">
-                                <Link to={`/alumni/${alumni.slug}`}>
+                                <Link to={`/event/${alumni.slug}`}>
                                   <img
                                     className="h-14 w-14 rounded-md  object-cover"
                                     src={alumni.image}
@@ -149,28 +138,36 @@ setShowModel(false)
                               </div>
                               <div className="ml-6">
                                 <div className="text-sm font-sub_heading   text-gray-900 dark:text-gray-100">
-                                  {alumni.firstname}{" "}{alumni.lastname}
+                                  {alumni.eventName}
                                 </div>
 
-                                <div className="text-sm text-gray-700">{alumni.email}</div>
+                                <div className="text-sm text-gray-700">{alumni.eventOrganizerEmail}</div>
                               </div>
                             </div>
                           </td>
+                          <td className="whitespace-nowrap text-left  px-12 py-4">
+                            <Link to={`/event/${alumni.slug}`}>
+                              <div className="text-sm font-sub_heading  text-gray-900 dark:text-gray-100 text-left ">
+                                {alumni.eventDate}
+                              </div>
+                            </Link>
+                           
+                          </td>
                           <td className="whitespace-nowrap px-12 py-4">
-                            <Link to={`/alumni/${alumni.slug}`}>
+                            <Link to={`/event/${alumni.slug}`}>
                               <div className="text-sm font-sub_heading   text-gray-900 dark:text-gray-100 ">
-                                {alumni.about.slice(0, 40)}{"... "}
+                                {alumni.eventOrganizer}
                               </div>
                             </Link>
                             {/* <div className="text-sm text-gray-700">{person.department}</div> */}
                           </td>
 
                           <td className="whitespace-nowrap px-4 py-4 font-sub_heading  text-sm text-gray-700 dark:text-gray-100">
-                            {alumni.branch}-{alumni.batch}
+                            {alumni.eventVenue}
                           </td>
                           <td className="whitespace-nowrap px-4 py-4 font-sub_heading   text-right text-sm font-medium">
                             <span
-                              onClick={() => {setShowModel(true);setAlumniIdDelete(alumni._id)}}
+                              onClick={() => {setShowModel(true);setEventIdDelete(alumni._id)}}
                               className=" cursor-pointer hover:underline text-red-700"
                             >
                               Delete
@@ -217,16 +214,7 @@ setShowModel(false)
                       ))}
                     </tbody>
                   </table>
-                  {fullAlumniList.totalAlumni> 6 && showMore && (
-                    <div className="flex justify-center mt-3 mb-3">
-                      <button
-                        onClick={handleShowMore}
-                        className="px-4 py-2 text-sm font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 transition duration-300 ease-in-out transform hover:scale-105"
-                      >
-                        Show More
-                      </button>
-                    </div>
-                  )}
+                
                 </div>
               </div>
             </div>
@@ -235,7 +223,7 @@ setShowModel(false)
       ) : (
         <div className="flex items-center justify-center m-auto h-screen">
           <p className="text-gray-500 text-lg">
-            <span className="font-bold">Oops!</span> You don't have any posts.
+            <span className="font-bold">Oops!</span> You don't have any events
           </p>
         </div>
       )}

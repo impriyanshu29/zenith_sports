@@ -15,7 +15,7 @@ import {useNavigate} from 'react-router-dom'
 function CreateAlumni() {
     const navigate = useNavigate()
   const [selectedDate, setSelectedDate] = useState(null);
-  const [alumniData, setalumniData] = useState({});
+  const [eventData, seteventData] = useState({});
   const [alumniImage, setAlumniImage] = useState(null);
   const [alumniImageUploadError, setAlumniImageUploadError] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
@@ -81,7 +81,7 @@ function CreateAlumni() {
               setAlumniImageUploadError(null);
               setImageUploadProgress(null);
 
-              setalumniData({ ...alumniData, image: downloadURL });
+              seteventData({ ...eventData, image: downloadURL });
               setTimeout(() => {
                 setUpdateMessage(null);
               }, 3000);
@@ -102,16 +102,18 @@ function CreateAlumni() {
   }; 
   //  ----------------------------------------------------------------------------
 
+  console.log(eventData);
+
   const handleSubmit = async (e) => {
     e.preventDefault();                                                                   
     try {
       
-      const res = await fetch("/api/alumni/createAlumni", {
+      const res = await fetch("/api/event/createEvent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(alumniData),
+        body: JSON.stringify(eventData),
       });
 
       
@@ -137,13 +139,13 @@ function CreateAlumni() {
     <div className="overflow-hidden  p-3 dark:glass-container md:w-2/4 md:px-14 min-h-screen mx-auto  bg-gray-100 dark:bg-[#131315] rounded-lg shadow-md ">
       <div className="mb-4 flex items-center justify-center rounded-lg py-2">
         <h1 className="text-center font-heading_font text-3xl my-4 text-[#27374D] dark:text-[#DDE6ED]">
-          Alumni Details
+          Event Details
         </h1>
       </div>
       <form onSubmit={handleSubmit}>
         <div>
           <p className="text-lg font-subheading_font text-[#27374D] dark:text-[#DDE6ED] ">
-            Personal Info
+            Event Info
           </p>
           <div className="mt-4 gap-6 dark:text-gray-500 font-body_font space-y-4 md:grid md:grid-cols-2 md:space-y-0">
             <div className="w-full">
@@ -151,44 +153,124 @@ function CreateAlumni() {
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 htmlFor="firstName"
               >
-                First Name<span className="text-red-700">*</span>
+                Event Name<span className="text-red-700">*</span>
               </label>
               <input
                 className="flex h-10 w-full rounded-md border border-black/30 bg-transparent  text-gray-400 px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700    focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
-                placeholder="Enter your first name"
-                id="firstName"
+                placeholder="Enter event name"
+                id="eventName"
                 onChange={(e) =>
-                  setalumniData({ ...alumniData, firstname: e.target.value })
+                  seteventData({ ...eventData, eventName: e.target.value })
                 }
               ></input>
             </div>
-
+{/* Event Veneue */}
             <div className="w-full">
               <label
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 htmlFor="lastName"
               >
-                Last Name<span className="text-red-700">*</span>
+                Event Venue<span className="text-red-700">*</span>
               </label>
               <input
                 className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
-                placeholder="Enter your last name"
-                id="lastName"
+                placeholder="Enter Event Venue"
+                id="eventVenue"
                 onChange={(e) =>
-                  setalumniData({ ...alumniData, lastname: e.target.value })
+                  seteventData({ ...eventData, eventVenue: e.target.value })
                 }
               ></input>
             </div>
 
+{/* Event Date */}
+            <div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="eventDate"
+              >
+               Event Date<span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent  text-gray-400 px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700    focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter event date"
+                id="eventDate"
+                onChange={(e) =>
+                  seteventData({ ...eventData, eventDate: e.target.value })
+                }
+              ></input>
+            </div>
+
+{/* Last Registeration Date  */}
+            <div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="lastName"
+              >
+                Last Registration Date<span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter Event Venue"
+                id="eventRegistrationLastDate"
+                onChange={(e) =>
+                  seteventData({ ...eventData, eventRegistrationLastDate: e.target.value })
+                }
+              ></input>
+            </div>
+
+{/* Category */}
+<div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="eventOrganizer"
+              >
+               Category <span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter Category"
+                id="eventCategory"
+                onChange={(e) =>
+                  seteventData({ ...eventData,eventCategory: e.target.value })
+                }
+              ></input>
+            </div>
+
+            
+{/* Team Number */}
+            <div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="eventOrganizer"
+              >
+               Team Number <span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter team number"
+                id="teamNumber"
+                onChange={(e) =>
+                  seteventData({ ...eventData,teamNumber: e.target.value })
+                }
+              ></input>
+            </div>
+
+
+
+{/* Description */}
             <div className="col-span-2 grid">
               <div className="w-full">
                 <label
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   htmlFor="about"
                 >
-                  About<span className="text-red-700">*</span>
+                  Description<span className="text-red-700">*</span>
                 </label>
                 <input
                   className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
@@ -196,12 +278,14 @@ function CreateAlumni() {
                   placeholder="Write something about alumni..."
                   id="about"
                   onChange={(e) =>
-                    setalumniData({ ...alumniData, about: e.target.value })
+                    seteventData({ ...eventData, description: e.target.value })
                   }
                 ></input>
               </div>
             </div>
 
+            
+{/* Image */}
             <div className="col-span-2 grid">
               <div className="flex gap-4 items-center justify-between  border-gray-300 ">
                 <FileInput
@@ -237,56 +321,97 @@ function CreateAlumni() {
 
         <div className="mt-8 border-t border-gray-400 border-dashed">
           <p className="text-lg mt-2 font-subheading_font text-[#27374D] dark:text-[#DDE6ED]">
-            College Info
+           Other Info
           </p>
 
           <div className="mt-2 dark:text-gray-500 font-body_font mb-2 gap-6 space-y-4 md:grid md:grid-cols-2 md:space-y-0">
+
+            {/* Organizer */}
           <div className="w-full">
-                <label
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  htmlFor="batch"
-                >
-                Batch<span className="text-red-700">*</span>
-                </label>
-                <input
-                  className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  type="number"
-                  placeholder="Write something about alumni..."
-                  id="batch"
-                  onChange={(e) =>
-                    setalumniData({ ...alumniData, batch: e.target.value })
-                  }
-                ></input>
-              </div>
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="eventOrganizer"
+              >
+                Organizer <span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter Organizer"
+                id="eventOrganizer"
+                onChange={(e) =>
+                  seteventData({ ...eventData,eventOrganizer: e.target.value })
+                }
+              ></input>
+            </div>
+            {/* Event Link */}
             <div className="w-full">
               <label
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 htmlFor="department"
               >
-                Department
+               Event Link<span className="text-red-700">*</span>
               </label>
               <input
                 className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
-                placeholder="Enter department"
-                id="department"
+                placeholder="Enter date"
+                id="eventRegistrationLink"
                 onChange={(e) =>
-                  setalumniData({ ...alumniData, branch: e.target.value })
+                  seteventData({ ...eventData, eventRegistrationLink: e.target.value })
                 }
               ></input>
             </div>
+
+            <div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="eventOrganiizer"
+              >
+                Wining Amount<span className="text-red-700">*</span>
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter Wining Amount"
+                id=" eventWinningAmount"
+                onChange={(e) =>
+                  seteventData({ ...eventData, eventWinningAmount: e.target.value })
+                }
+              ></input>
+            </div>
+
+            {/* Registration Amount  */}
+            <div className="w-full">
+              <label
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                htmlFor="department"
+              >
+               Registration Amount
+              </label>
+              <input
+                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter Amount"
+                id="eventRegistrationAmount"
+                onChange={(e) =>
+                  seteventData({ ...eventData,  eventRegistrationAmount: e.target.value })
+                }
+              ></input>
+            </div>
+
             <div className="col-span-2 grid">
               <div className="w-full">
                 <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Company
+                Rules
                 </label>
                 <input
                   className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
-                  placeholder="Enter present company"
-                  id="company"
+                  placeholder="Enter Event Rules"
+                  id="eventRules"
                   onChange={(e) =>
-                    setalumniData({ ...alumniData, company: e.target.value })
+                    seteventData({ ...eventData,eventRules: e.target.value })
                   }
                 ></input>
               </div>
@@ -311,9 +436,9 @@ function CreateAlumni() {
                   className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
                   placeholder="Enter Instagram"
-                  id="instagram"
+                  id="eventOrganizerInstagram"
                   onChange={(e) =>
-                    setalumniData({ ...alumniData, instagram: e.target.value })
+                    seteventData({ ...eventData, eventOrganizerInstagram: e.target.value })
                   }
                 ></input>
               </div>
@@ -331,9 +456,29 @@ function CreateAlumni() {
                   className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-500   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="text"
                   placeholder="Enter linkedin id.."
-                  id="linkedin"
+                  id="eventOrganizerLinkedin:"
                   onChange={(e) =>
-                    setalumniData({ ...alumniData, linkedin: e.target.value })
+                    seteventData({ ...eventData,   eventOrganizerLinkedin: e.target.value })
+                  }
+                ></input>
+              </div>
+            </div>
+
+            <div className="col-span-2 grid">
+              <div className="w-full">
+                <label
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  htmlFor="email"
+                >
+                  PhoneNumber
+                </label>
+                <input
+                  className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-500   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Enter mobile phone.."
+                  id="eventOrganizerContact"
+                  onChange={(e) =>
+                    seteventData({ ...eventData,   eventOrganizerContact: e.target.value })
                   }
                 ></input>
               </div>
@@ -351,9 +496,9 @@ function CreateAlumni() {
                   className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm dark:border-gray-600 dark:placeholder:text-gray-700 text-gray-400   focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   type="email"
                   placeholder="Enter email.."
-                  id="email"
+                  id="eventOrganizerEmail"
                   onChange={(e) =>
-                    setalumniData({ ...alumniData, email: e.target.value })
+                    seteventData({ ...eventData, eventOrganizerEmail: e.target.value })
                   }
                 ></input>
 
@@ -404,6 +549,7 @@ function CreateAlumni() {
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </form>

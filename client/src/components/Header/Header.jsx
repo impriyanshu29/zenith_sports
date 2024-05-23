@@ -52,13 +52,17 @@ const navigate = useNavigate()
       href: "/about",
     },
     {
-      name: "FAMILY",
-      href: "/family",
+      name:"EVENTS",
+      href: "/events",
     },
     {
-      name: "ACHIEVMENTS",
-      href: "/achievements",
+      name: "STORE",
+      href: "/store",
     },
+    {
+      name: "CONTACT",
+      href: "/contact",
+    }
 
   ];
 
@@ -96,9 +100,9 @@ const navigate = useNavigate()
             className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
           >
             <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
-              AKGEC
+            CAMPUS
             </span>
-            -FC
+            -Play
           </Link>
         </div>
         <div className="hidden grow items-end lg:flex justify-center">
@@ -226,9 +230,9 @@ const navigate = useNavigate()
                       className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
                     >
                       <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
-                        AKGEC
+                        ZEN
                       </span>
-                      -FC
+                      ITH
                     </Link>
                   </div>
                   <div className="-mr-2">

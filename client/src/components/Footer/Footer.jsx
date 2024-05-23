@@ -12,10 +12,15 @@ function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-          <Link to="/" className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}>
-        <span className='px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg'>AKGEC</span>
-        -FC
-      </Link>
+          <Link
+            to="/"
+            className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
+          >
+            <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
+            CAMPUS
+            </span>
+            -Play
+          </Link>
           </div>
           <div className="grid grid-cols-2  gap-8 sm:gap-6 sm:grid-cols-3 ">
             <div>
@@ -87,7 +92,7 @@ function Footer() {
           <span className="text-sm text-gray-500 sm:text-center">
             © {year} -
             <a href="https://www.instagram.com/akgec_fc/?hl=en" className="hover:underline ">
-              <span className="text-gray-900 font-medium dark:text-[#BFCDD9] hover:text-[#27374D]"> AKGEC-FC </span>
+              <span className="text-gray-900 font-medium dark:text-[#BFCDD9] hover:text-[#27374D]"> CAMPUS-Play </span>
             </a>
             . All Rights Reserved.
           </span>

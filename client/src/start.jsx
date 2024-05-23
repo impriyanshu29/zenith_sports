@@ -8,20 +8,21 @@ import Signin from "./pages/Signin.jsx";
 import Signup from "./pages/Signup.jsx";
 import DashBoard from "./pages/Dashboard.jsx";
 import About from "./pages/About.jsx";
-import Alumni from "./pages/Alumni.jsx";
+import Alumni from "./pages/EventPage.jsx";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider } from "./components/Theme/ThemeProvider.jsx";
 import Private_Route from "./components/PrivateRoute/Private_Route.jsx";
-import Achievments from "./pages/Achievments.jsx";
-import Family from "./pages/Family.jsx";
+import Store from "./pages/Store.jsx";
+import Events from "./pages/Event.jsx";
 
 
 import Blog from "./pages/Blog.jsx";
 import TokenRefresher from "./TokenRefresher.js";
 import BlogSlug from "./pages/BlogSlug.jsx";
 import Search from "./pages/Search.jsx";
+import EventPage from "./pages/EventPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,27 +76,27 @@ const router = createBrowserRouter([
         element:<Search/>
       },
       {
-        path:"/alumni/:alumniSlug",
-        element:<Alumni/>
+        path:"/events/:eventSlug",
+        element:<EventPage/>
       },
       {
-        path: "/family",
+        path: "/events",
         element: <Private_Route />,
         children: [
           {
             index: true,
-            element: <Family />,
+            element: <Events />,
           },
         ],
       },
       
       {
-        path: "/achievements",
+        path: "/store",
         element: <Private_Route />,
         children: [
           {
             index: true,
-            element: <Achievments />,
+            element: <Store />,
           },
         ],
       },
