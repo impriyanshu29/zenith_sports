@@ -10,7 +10,7 @@ import { IoMdMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import {useNavigate} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
-
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { currentUser } = useSelector((state) => state.user);
@@ -62,7 +62,8 @@ const navigate = useNavigate()
     {
       name: "CONTACT",
       href: "/contact",
-    }
+    },
+    
 
   ];
 
@@ -89,7 +90,8 @@ const navigate = useNavigate()
     console.log("Theme Changed!");
     dispatch(changeTheme());
   };
-
+  const { cart } = useSelector((state) => state.cart);
+  const totalItems = cart?.data?.totalQuantity;
   return (
     
     <div className="relative w-full bg-gray-50 dark:bg-neutral-950 ">
@@ -119,23 +121,19 @@ const navigate = useNavigate()
             ))}
           </ul>
         </div>
-        <form onSubmit={handleSearchResult} className="ml-4 flex justify-center">
-  <fieldset>
-    <label htmlFor="searchInput" className="sr-only">Search</label>
-    <input
-      id="searchInput"
-      className="flex h-10 w-32 md:w-2/4 lg:w-3/4 rounded-md dark:bg-gray-200 bg-slate-100 text-gray-900 px-3 py-2 text-sm dark:placeholder:text-gray-700 placeholder:text-gray-900 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-      type="text"
-      value={searchTerm}
-      placeholder="Search..."
-      
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
-    
-  </fieldset>
-</form>
+       
 
-        <div className=" flex gap-3 space-x-2 ">
+        <div className=" flex gap-2 space-x-2 ">
+        <div className=" rounded-full p-3 my-auto">
+            <Link className="relative" to="/cart">
+              <HiOutlineShoppingCart className="h-6 w-6 cursor-pointer" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#E52A3D] text-white text-xs rounded-full px-1 ">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+          </div>
           <div className="">
           
             <Button
@@ -146,6 +144,7 @@ const navigate = useNavigate()
               {currentTheme === "dark" ? <FaMoon /> : <IoSunnySharp />}
             </Button>
           </div>
+         
           <div>
             {currentUser ? (
               <div className="relative inline-block">
@@ -181,8 +180,16 @@ const navigate = useNavigate()
                       >
                         Profile
                       </div>
-                    </Link>
 
+                    </Link>
+                    <Link to="/whistList">
+                      <div
+                        onClick={() => setShowDropdown(!showDropdown)}
+                        className="hover:bg-gray-300 border-t dark:border-gray-600 hover:text-gray-800 p-4 cursor-pointer"
+                      >
+                        WhistList
+                      </div>
+                    </Link>
                     {currentUser.message.user.isAdmin && (
                       <Link to="/dashboard?tab=updatepost">
                         <div
@@ -227,12 +234,12 @@ const navigate = useNavigate()
                   <div className="inline-flex items-center space-x-2">
                     <Link
                       to="/"
-                      className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
+                      className={`whitespace-nowrap self-center font-logo_font text-black dark:text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
                     >
-                      <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
-                        ZEN
+                      <span className="px-2 py-1  bg-yellow-400 text-[#DDE6ED] rounded-lg">
+                       CAMPUS
                       </span>
-                      ITH
+                      -Play
                     </Link>
                   </div>
                   <div className="-mr-2">

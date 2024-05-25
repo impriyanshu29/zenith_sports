@@ -8,6 +8,8 @@ import cookieParser from 'cookie-parser'
 import achievment from '../routes/achievment.routes.js'
 import orderRoute from '../routes/order.routes.js'
 import menuRoute from '../routes/menu.routes.js'
+import cartRoute from '../routes/cart.routes.js'
+import whistListRouter from '../routes/whistList.routes.js'
 import path from 'path';
 
 const app = express()
@@ -23,6 +25,8 @@ app.use("/api/list",userList)
 app.use("/api/achievment",achievment)
 app.use('/api/order', orderRoute);
 app.use('/api/menu', menuRoute);
+app.use('/api/cart', cartRoute);
+app.use('/api/whistList', whistListRouter);
 
 
 app.use(express.static(path.join(__dirname, '/client/dist')));

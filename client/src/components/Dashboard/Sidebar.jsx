@@ -191,9 +191,9 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                 {alumnishowDropDown && (
                   <div className="pl-8">
                     <NavLink
-                      to="/dashboard?tab=createAlumni"
+                      to="/dashboard?tab=createEvent"
                       className={`flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
-                        tab === "createAlumni"
+                        tab === "createEvent"
                           ? "bg-gray-200 text-gray-800"
                           : ""
                       }`}
@@ -203,9 +203,9 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                     </NavLink>
 
                     <NavLink
-                      to="/dashboard?tab=updatealumni"
+                      to="/dashboard?tab=updateEvent"
                       className={`flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
-                        tab === "updatealumni"
+                        tab === "updateEvent"
                           ? "bg-gray-200 text-gray-800"
                           : ""
                       }`}
@@ -231,7 +231,7 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                     className="h-5 w-5 inline-block "
                     aria-hidden="true"
                   />
-                  <h1 className="ml-2 text-gray-600 ">Achievements</h1>
+                  <h1 className="ml-2 text-gray-600 ">Store</h1>
                   <IoIosArrowDropdownCircle
                     className="h-5 w-5 ml-2"
                     aria-hidden="true"
@@ -240,24 +240,24 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                 {showDropDownAchievements && (
                   <div className="pl-8">
                     <NavLink
-                      to="/dashboard?tab=createAchievements"
+                      to="/dashboard?tab=createItems"
                       className={`flex transform items-center rounded-lg gap-2 px-3 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
-                        tab === "createAchievements" ? "bg-gray-200 text-gray-800" : ""
+                        tab === "createItems" ? "bg-gray-200 text-gray-800" : ""
                       }`}
                     >
                       <FaMedal className="h-4 w-5" aria-hidden="true" />
-                      <span className="text-sm font-medium">Create Achievementst</span>
+                      <span className="text-sm font-medium">Add Items </span>
                     </NavLink>
                     <NavLink
-                      to="/dashboard?tab=updateAchievements"
+                      to="/dashboard?tab=updateItems"
                       className={`flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
-                        tab === "updateAcievements" ? "bg-gray-200 text-gray-800" : ""
+                        tab === "updateItems" ? "bg-gray-200 text-gray-800" : ""
                       }`}
                     >
                       <FaPencilRuler className="h-4 w-5" aria-hidden="true" />
                       <span className="mx-2 text-sm font-medium">
                         {" "}
-                        Update Achievements
+                        Update Items
                       </span>
                     </NavLink>
                   </div>

@@ -14,6 +14,9 @@ import EditAlumni from '../components/Alumni/EditAlumni';
 import UpdateAchievement from '../components/Achievements/UpdateAchievments';
 import CreateAchievements from '../components/Achievements/CreateAchievements';
 import EditAchievements from '../components/Achievements/EditAchievements';
+import CreateItems from './Admin/Store/CreateItems';
+import UpdateItems from './Admin/Store/UpdateItems';
+import EditItem from './Admin/Store/EditItem';
 
 function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
@@ -39,13 +42,18 @@ function Dashboard() {
   {currentUser.message.user.isAdmin && tab === 'createpost' && <CreatePost/>}
   {currentUser.message.user.isAdmin && tab === 'userlist' && <UserList/>}
   {currentUser.message.user.isAdmin && tab === 'updatepost' && <UpdatePost/>}
-  {currentUser.message.user.isAdmin && tab === 'createAlumni' && <CreateAlumni/>}
-  {currentUser.message.user.isAdmin && tab === 'updatealumni' && <UpdateAlumni/>}
+  {currentUser.message.user.isAdmin && tab === 'createEvent' && <CreateAlumni/>}
+  {currentUser.message.user.isAdmin && tab === 'updateEvent' && <UpdateAlumni/>}
   {currentUser.message.user.isAdmin && tab === 'updateAchievements' && <UpdateAchievement/>}
   {currentUser.message.user.isAdmin && tab === 'createAchievements' && <CreateAchievements/>}
   {currentUser.message.user.isAdmin && tab.startsWith('edit_post-')&& tab.length > 'edit_post-'.length && <EditPost/>}
   {currentUser.message.user.isAdmin && tab.startsWith('edit_alumni-')&& tab.length > 'edit_alumni-'.length && <EditAlumni/>}
 {currentUser.message.user.isAdmin && tab.startsWith('edit_achievement')&& tab.length > 'edit_achievement-'.length && <EditAchievements/>}
+{currentUser.message.user.isAdmin && tab === "createItems" && <CreateItems />}
+{currentUser.message.user.isAdmin && tab === "updateItems" && <UpdateItems />}
+
+         
+          {currentUser.message.user.isAdmin && tab.startsWith('editItem-')&& tab.length > 'editItem-'.length && <EditItem />} 
   </div>
 }
 

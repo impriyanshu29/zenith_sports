@@ -5,13 +5,14 @@ import { version } from 'react';
 import storage from 'redux-persist/lib/storage'
 import themeReducer from '../function/themeSlice'
 
-
+import cartReducer from '../function/cartSlice'
 
 
 
 const rootReducer = combineReducers({
     user:userReducer,
-    theme:themeReducer
+    theme:themeReducer,
+    cart : cartReducer
 });
 
 const persistConfig ={

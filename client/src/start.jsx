@@ -26,6 +26,9 @@ import EventPage from "./pages/EventPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import TermsAndConditions from "./pages/TermsCondition.jsx";
 import Contact from "./pages/Contact.jsx";
+import Cart from "./pages/Cart.jsx";
+import Items from "./pages/Items.jsx";
+import WhistList from "./pages/Whistlist.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -101,6 +104,34 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Events />,
+          },
+        ],
+      },{
+        path: "/carts",
+        element: <Private_Route />,
+        children: [
+          {
+            index: true,
+            element: <Cart />,
+          },
+        ],
+      },{
+        path: "/items/:itemSlug",
+        element: <Private_Route />,
+        children: [
+          {
+            index: true,
+            element: < Items/>,
+          },
+        ],
+      },
+      {
+        path: "/whistList",
+        element: <Private_Route />,
+        children: [
+          {
+            index: true,
+            element: <WhistList />,
           },
         ],
       },
