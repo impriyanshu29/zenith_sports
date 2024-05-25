@@ -25,7 +25,7 @@ export const createMenu = asyncHandler(async (req, res) => {
     if (user.isAdmin === false) {
       return res
         .status(401)
-        .json(new apiResponse(401, "You are not authorized to create menu"));
+        .json(new apiResponse(401, "You are not authorized to create item"));
     }
 
    
@@ -43,7 +43,7 @@ export const createMenu = asyncHandler(async (req, res) => {
     const menuExists = await Menu.findOne({ menuName});
 
     if (menuExists) {
-      throw new apiError (400, "Menu already exists");
+      throw new apiError (400, "Item already exists");
     }
 
     //Slug-generation
@@ -66,7 +66,7 @@ export const createMenu = asyncHandler(async (req, res) => {
     const newMenu = await Menu.create({...req.body, slug, user: req.user._id ,  discountPrice : discountPrice})
 
     if (!newMenu) {
-      throw new apiError (500, "Error creating menu");
+      throw new apiError (500, "Error creating item");
     }
 
 
@@ -76,7 +76,7 @@ export const createMenu = asyncHandler(async (req, res) => {
 
   } catch (error) {
     console.error("Error creating menu:", error.message);
-    throw new apiError (500, "Error creating menu : " + error.message);
+    throw new apiError (500, "Error creating item : " + error.message);
   }
 });
 
@@ -162,12 +162,12 @@ export const getMenu = asyncHandler(async (req, res) => {
             lastMonthMenu,
           },
         },
-        "Menu found successfully"
+        "Item found successfully"
       )
     );
   } catch (error) {
     console.error("Error getting menu:", error.message);
-    throw new apiError (500, "Error getting menu : " + error.message);
+    throw new apiError (500, "Error getting item : " + error.message);
   }
 });
 
@@ -205,16 +205,16 @@ export const updateMenu = asyncHandler(async (req, res) => {
       }
     );
     if(!updateMenu){
-      return res.status(404).json(new apiResponse(404, "Menu not found"));
+      return res.status(404).json(new apiResponse(404, "Item not found"));
     }
 
     return res
       .status(200)
-      .json(new apiResponse(200, "Menu updated successfully",{ menu:updatedMenu}));
+      .json(new apiResponse(200, "Item updated successfully",{ menu:updatedMenu}));
 
   } catch (error) {
     console.error("Error updating menu:", error.message);
-    throw new apiError (500, "Error updating menu");
+    throw new apiError (500, "Error updating Item");
   }
 });
 
@@ -232,11 +232,11 @@ export const deleteMenu = asyncHandler(async (req, res) => {
     
         return res
         .status(200)
-        .json(new apiResponse(200, "Menu deleted successfully"));
+        .json(new apiResponse(200, "Item deleted successfully"));
     
     } catch (error) {
         console.error("Error deleting menu:", error.message);
-        throw new apiError (500, "Error deleting menu");
+        throw new apiError (500, "Error deleting item");
     }
     }
     );

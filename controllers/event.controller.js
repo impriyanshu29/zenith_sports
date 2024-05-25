@@ -54,7 +54,7 @@ export const getEvent = asyncHandler(async (req, res, next) => {
   const events = await Event.find({
     ...(req.query.eventId && { _id: req.query.eventId }),
     ...(req.query.slug && { slug: req.query.slug }),
-    ...(req.query.eventCategory && { batch: req.query.eventCategory }),
+    ...(req.query.eventCategory && {eventCategory: req.query.eventCategory }),
     ...(req.query.searchEvent && {
       $or: [
         { eventName: { $regex: req.query.searchAlumni, $options: "i" } },

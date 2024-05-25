@@ -128,7 +128,7 @@ setShowModel(false)
                           <td className="whitespace-nowrap px-4 py-4">
                             <div className="flex items-center">
                               <div className="h-14 w-14 flex-shrink-0">
-                                <Link to={`/event/${alumni.slug}`}>
+                                <Link to={`/events/${alumni.slug}`}>
                                   <img
                                     className="h-14 w-14 rounded-md  object-cover"
                                     src={alumni.image}
@@ -146,7 +146,7 @@ setShowModel(false)
                             </div>
                           </td>
                           <td className="whitespace-nowrap text-left  px-12 py-4">
-                            <Link to={`/event/${alumni.slug}`}>
+                            <Link to={`/events/${alumni.slug}`}>
                               <div className="text-sm font-sub_heading  text-gray-900 dark:text-gray-100 text-left ">
                                 {alumni.eventDate}
                               </div>
@@ -154,7 +154,7 @@ setShowModel(false)
                            
                           </td>
                           <td className="whitespace-nowrap px-12 py-4">
-                            <Link to={`/event/${alumni.slug}`}>
+                            <Link to={`/events/${alumni.slug}`}>
                               <div className="text-sm font-sub_heading   text-gray-900 dark:text-gray-100 ">
                                 {alumni.eventOrganizer}
                               </div>
