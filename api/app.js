@@ -6,6 +6,8 @@ import eventRouter from '../routes/event.routes.js'
 import userList from '../routes/userList.routes.js'
 import cookieParser from 'cookie-parser'
 import achievment from '../routes/achievment.routes.js'
+import orderRoute from '../routes/order.routes.js'
+import menuRoute from '../routes/menu.routes.js'
 import path from 'path';
 
 const app = express()
@@ -19,7 +21,8 @@ app.use("/api/post",postRouter)
 app.use("/api/event",eventRouter)
 app.use("/api/list",userList)
 app.use("/api/achievment",achievment)
-
+app.use('/api/order', orderRoute);
+app.use('/api/menu', menuRoute);
 
 
 app.use(express.static(path.join(__dirname, '/client/dist')));

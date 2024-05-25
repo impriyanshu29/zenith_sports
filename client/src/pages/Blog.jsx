@@ -54,7 +54,7 @@ function Blog() {
         <div className="flex flex-col space-y-8 pb-10 pt-12 px-2 md:pt-24">
           <p className="text-center font-heading_font text-3xl text-[#27374D] dark:text-[#DDE6ED] md:text-5xl md:leading-10">
             Unveiling Knowledge: Dive Into{" "}
-            <span className="text-sky-700 dark:text-sky-500"> Our Blog</span>
+            <span className="text-yellow-400 dark:text-yellow-400"> Our Blog</span>
           </p>
           <p className="max-w-4xl mx-auto text-center text-base font-body_font   text-gray-600 md:text-xl">
             Whether it's football, basketball, cricket, or tennis, these blog
@@ -65,7 +65,7 @@ function Blog() {
           <form onSubmit={handleSearch}>
             <div className="mt-6 mx-auto flex w-full items-center space-x-2 md:w-1/3">
               <input
-                className="flex h-10 w-full rounded-md border border-gray-500 text-gray-500 dark:bg-gray-300   bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex h-10 w-full rounded-md border border-gray-500 text-gray-500 dark:bg-gray-300 bg-slate-100   px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
                 value={searchValue}
                 placeholder="Search Topics"
@@ -73,7 +73,7 @@ function Blog() {
               ></input>
               <button
                 type="submit"
-                className="rounded-md bg-sky-700 dark:bg-sky-600 dark:text-gray-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                className="rounded-md bg-yellow-400 dark:text-gray-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Search
               </button>

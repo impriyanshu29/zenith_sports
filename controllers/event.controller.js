@@ -5,38 +5,42 @@ import { apiResponse } from "../utils/apiResponse.js";
 import Event from "../models/event.model.js";
 
 export const createEvent = asyncHandler(async (req, res) => {
-  if (!req.user.isAdmin) {
-    throw new apiError(403, "Unauthorized access");
-  }
-
-  const event = await Event.create(req.body);
-
-  if (!event) {
-    throw new apiError(500, "Event not created");
-  }
-
-  const timestamp = Date.now();
-  const slug = `${req.body.eventName
-    .toLowerCase()
-    .split(" ")
-    .join("-")}-${timestamp}`;
-
-  const createdEvent = await Event.findByIdAndUpdate(
-    event._id,
-    {
-      $set: {
-        slug: slug,
-      },
-    },
-    {
-      new: true,
+  try {
+    if (!req.user.isAdmin) {
+      throw new apiError(403, "Unauthorized access");
     }
-  ).select("-__v");
+  
+    const event = await Event.create(req.body);
+  
+    if (!event) {
+      throw new apiError(500, "Event not created");
+    }
+  
+    const timestamp = Date.now();
+    const slug = `${req.body.eventName
+      .toLowerCase()
+      .split(" ")
+      .join("-")}-${timestamp}`;
+  
+    const createdEvent = await Event.findByIdAndUpdate(
+      event._id,
+      {
+        $set: {
+          slug: slug,
+        },
+      },
+      {
+        new: true,
+      }
+    ).select("-__v");
+  
+    return res
+      .status(201)
+      .json(new apiResponse(createdEvent, "Event created successfully", 201));
 
-  return res
-    .status(201)
-    .json(new apiResponse(createdEvent, "Event created successfully", 201));
-});
+  } catch (error) {
+    throw new apiError(500, "Error creating event");
+  }  });
 
 export const getEvent = asyncHandler(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;

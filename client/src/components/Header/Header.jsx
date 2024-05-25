@@ -124,7 +124,7 @@ const navigate = useNavigate()
     <label htmlFor="searchInput" className="sr-only">Search</label>
     <input
       id="searchInput"
-      className="flex h-10 w-32 md:w-2/4 lg:w-3/4 rounded-md dark:bg-gray-200 bg-gray-900 px-3 py-2 text-sm dark:placeholder:text-gray-700 placeholder:text-gray-200 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+      className="flex h-10 w-32 md:w-2/4 lg:w-3/4 rounded-md dark:bg-gray-200 bg-slate-100 text-gray-900 px-3 py-2 text-sm dark:placeholder:text-gray-700 placeholder:text-gray-900 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
       type="text"
       value={searchTerm}
       placeholder="Search..."

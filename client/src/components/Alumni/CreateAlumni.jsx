@@ -121,19 +121,20 @@ function CreateAlumni() {
     
 
       if(!res.ok){
-        setProfileCreatedError(data.error)
-       
+        setProfileCreatedError(data.message)
         return
       }
       else{
         setProfileCreatedError(null)
-        
         setProfileCreatedProgress(data.status)
-        navigate(`/alumni/${data.message.alumni.slug}`)
+        navigate(`/events/${data?.data?.slug}`)
       }
+    
     } catch (error) {
         setProfileCreatedError("Something went wrong")
     }
+
+    
   };
   return (
     <div className="overflow-hidden  p-3 dark:glass-container md:w-2/4 md:px-14 min-h-screen mx-auto  bg-gray-100 dark:bg-[#131315] rounded-lg shadow-md ">

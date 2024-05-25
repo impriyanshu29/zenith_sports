@@ -58,13 +58,13 @@ const navigate = useNavigate();
       <div className=" flex  items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="xl:mx-auto  xl:w-full xl:max-w-sm 2xl:max-w-md">
           <div className="mb-2 flex justify-center">  
-          <Link to="/" className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}>
-        <span className='px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg'>AKGEC</span>
-        -FC
+          <Link to="/" className={`whitespace-nowrap self-center font-logo_font text-black dark:text-gray-300 text-sm sm:text-xl font-semibold`}>
+        <span className='px-2 py-1  dark:bg-gray-800   bg-yellow-400 text-[#DDE6ED] rounded-lg'>CAMPUS</span>
+        -Play
       </Link>
 
           </div>
-          <h2 className="dark:text-[#BFCDD9] text-center text-2xl font-bold font-heading_font leading-tight text-[#27374D]">
+          <h2 className="dark:text-[#BFCDD9] text-center text-2xl font-bold font-heading_font leading-tight text-black">
             Sign up to create account
           </h2>
           <p className="dark:text-[#65768C]  mt-2 text-center text-base text-[#9DB2BF]">
@@ -129,7 +129,7 @@ const navigate = useNavigate();
               <div>
                 <button
                   type="submit"
-                  className="inline-flex w-full dark:bg-[#0F1926] items-center justify-center rounded-md bg-[#27374D] px-3.5 py-2.5 font-semibold leading-7 text-[#DDE6ED] hover:bg-[#DDE6ED] hover:text-[#27374D] transition-all duration-200 "
+                  className="inline-flex w-full dark:bg-[#0F1926] items-center justify-center rounded-md dark: bg-yellow-400 px-3.5 py-2.5 font-semibold leading-7 text-[#DDE6ED] hover:bg-[#DDE6ED] hover:text-[#27374D] transition-all duration-200 "
                   disabled={loading}
                 >
                   {

@@ -65,7 +65,7 @@ console.log(eventList?.data?.length)
             console.log(data.error);
         }
         else{
-            setEventList((prev) => prev.filter((post) => post._id !== eventIdDelete))
+            setEventList(data)
             setShowModel(false)
         }
     } catch (error) {

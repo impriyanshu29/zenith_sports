@@ -25,6 +25,7 @@ import Search from "./pages/Search.jsx";
 import EventPage from "./pages/EventPage.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import TermsAndConditions from "./pages/TermsCondition.jsx";
+import Contact from "./pages/Contact.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path:"/privacyPolicy",
         element:<PrivacyPolicy/>
+      },
+      {
+        path:"/contact",
+        element:<Contact/>
       },
       {
         path:"/termsCondition",

@@ -53,13 +53,11 @@ const handleSearch = (e) =>{
       <div className="mx-auto max-w-7xl px-2 ">
         <div className="flex flex-col space-y-8 pb-10 pt-12 px-2 md:pt-24">
           <p className="text-center font-heading_font text-3xl text-[#27374D] dark:text-[#DDE6ED] md:text-5xl md:leading-10">
-          Proud Past, Bright Futures :  <span className="text-sky-700 dark:text-sky-500">  Alumni Showcase</span> 
+          <span className="text-yellow-400 dark:text-yellow-400"> Campus Play</span>  Events: Where the Fun Begins!
 </p>
           
           <p className="max-w-4xl mx-auto text-center text-base font-body_font   text-gray-600 md:text-xl">
-            Discover the remarkable journeys of our esteemed alumni, showcasing
-            their triumphs on the football field and beyond, as they excel in
-            their careers with renowned companies.
+          Get Ready for Campus Play Events: Your Hub for Campus Excitement and Experience the Pulse of Campus Life Dive into Our Event Lineup!
           </p>
           <form onSubmit={handleSearch}>
             <div className="mt-6 mx-auto flex w-full items-center space-x-2 md:w-1/3">
@@ -72,7 +70,7 @@ const handleSearch = (e) =>{
               ></input>
               <button
                 type="submit"
-                className="rounded-md bg-sky-700 dark:bg-sky-600 dark:text-gray-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                className="rounded-md bg-sky-700 dark:bg-yellow-400 dark:text-gray-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Search
               </button>
