@@ -99,7 +99,7 @@ const navigate = useNavigate()
             to="/"
             className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
           >
-            <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
+            <span className="px-2 py-1  dark:bg-yellow-400 bg-yellow-400 text-[#DDE6ED] rounded-lg">
             CAMPUS
             </span>
             -Play
@@ -124,7 +124,7 @@ const navigate = useNavigate()
     <label htmlFor="searchInput" className="sr-only">Search</label>
     <input
       id="searchInput"
-      className="flex h-10 w-32 md:w-2/4 lg:w-3/4 rounded-md dark:bg-gray-200 bg-gray-700 px-3 py-2 text-sm dark:placeholder:text-gray-700 placeholder:text-gray-200 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+      className="flex h-10 w-32 md:w-2/4 lg:w-3/4 rounded-md dark:bg-gray-200 bg-gray-900 px-3 py-2 text-sm dark:placeholder:text-gray-700 placeholder:text-gray-200 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
       type="text"
       value={searchTerm}
       placeholder="Search..."

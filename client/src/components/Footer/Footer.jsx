@@ -74,12 +74,12 @@ function Footer() {
               </h2>
               <ul className="dark:text-[#65768C] text-base  text-[#526D82] font-body_font ">
                 <li className="mb-4">
-                  <Link to="#" className="hover:underline">
+                  <Link to="/privacyPolicy" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:underline">
+                  <Link to="/termsCondition" className="hover:underline">
                     Terms &amp; Conditions
                   </Link>
                 </li>

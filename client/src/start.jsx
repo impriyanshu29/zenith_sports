@@ -23,6 +23,8 @@ import TokenRefresher from "./TokenRefresher.js";
 import BlogSlug from "./pages/BlogSlug.jsx";
 import Search from "./pages/Search.jsx";
 import EventPage from "./pages/EventPage.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import TermsAndConditions from "./pages/TermsCondition.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -78,6 +80,14 @@ const router = createBrowserRouter([
       {
         path:"/events/:eventSlug",
         element:<EventPage/>
+      },
+      {
+        path:"/privacyPolicy",
+        element:<PrivacyPolicy/>
+      },
+      {
+        path:"/termsCondition",
+        element:<TermsAndConditions/>
       },
       {
         path: "/events",
