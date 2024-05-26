@@ -244,7 +244,7 @@ function Checkout() {
                           continue.
                         </p>
     
-                        <Link to="/account?pro=address">
+                        <Link to="/dashboard?tab=address">
                           <button className="mt-6 px-4 py-2 bg-yellow-400 text-white rounded-lg hover:bg-[#E52A3D] transition">
                             <FaPlus className="inline-block mr-2" />
                             Add New Address
@@ -266,7 +266,7 @@ function Checkout() {
                                 </h3>
                               </div>
                               <div>
-                                <Link to="/account?pro=address">
+                                <Link to="/dashboard?tab=address">
                                   <button className=" transition">
                                     <FaPen className="inline-block mr-2" />
                                   </button>

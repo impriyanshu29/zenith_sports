@@ -19,29 +19,22 @@ function Address_Profile() {
  
 
   const [pincode, setPinCode] = useState("");
-  const [load, setLoading] = useState(false);
+  
 
   const [formData, setFormData] = useState({});
   const { currentUser } = useSelector((state) => state.user);
-  const { currentAddress, error, loading } = useSelector(
+  const { currentAddress,error } = useSelector(
     (state) => state.address
   );
   const dispatch = useDispatch();
   const [updateMessage, setUpdateMessage] = useState("");
   const userID = currentUser?.message?.user?._id;
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (myParam && myParam === "address") {
-          const refreshRes = await fetch(
-            `/api/auth/refreshToken?userID=${userID}`,
-            {
-              method: "GET",
-              credentials: "include",
-            }
-          );
-
+       
           
           const userId = currentUser?.message?.user?._id;
           dispatch(addAddressStart());
@@ -57,7 +50,7 @@ function Address_Profile() {
           } else {
             dispatch(addAddressFail(data.message));
           }
-        }
+       
       } catch (error) {
         dispatch(addAddressFail(error.message));
         setTimeout(() => {
@@ -69,6 +62,7 @@ function Address_Profile() {
     fetchData();
   }, [location.search, myParam, dispatch]);
 
+
   const handlepinCodeChange = (e) => {
     setPinCode(e.target.value);
   };
@@ -78,8 +72,9 @@ function Address_Profile() {
     try {
       dispatch(addAddressStart());
 
-     
+        setLoading(true);
       const pin_Code = await fetch(`/api/add/pinCode`, {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,6 +84,7 @@ function Address_Profile() {
 
       const data = await pin_Code.json();
       if (pin_Code.ok) {
+
         setLoading(false);
         dispatch(addAddressSuccess(data));
         setUpdateMessage(data.message);
@@ -150,8 +146,8 @@ function Address_Profile() {
   };
 
   return (
-    <section className="bg-zinc-50 w-full flex  items-center justify-center min-h-screen">
-      <div className="bg-white w-full mx-4 md:mx-0 max-w-2xl shadow-xl md:shadow-lg my-6  rounded-md px-6 md:px-16 py-10 ">
+    <section className="w-full flex  items-center justify-center min-h-screen">
+      <div className="bg-white dark:bg-[#131315]  w-full mx-4 md:mx-0 max-w-2xl shadow-xl md:shadow-lg my-6  rounded-md px-6 md:px-16 py-10 ">
         <h1 className="text-3xl font-bold text-center mb-6">Address</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           {/* Full Name  and  Mobile number */}
@@ -215,7 +211,7 @@ function Address_Profile() {
               </div>
               <div className="mt-12 mx-4 px-6 hover:text-green-700 font-semibold text-gray-600  cursor-pointer">
                 <button type="button" onClick={handlePinCode}>
-                  {load ? "Verifying..." : "Verify"}
+                  {loading ? "Verifying..." : "Verify"}
                 </button>
               </div>
             </div>
@@ -295,7 +291,7 @@ function Address_Profile() {
           <div className="pt-6 flex gap-4">
             <button
               type="submit"
-              className="bg-[#E52A3D] form-box text-white font-semibold py-2 px-4 rounded-md   w-full"
+              className="bg-yellow-400 form-box text-white font-semibold py-2 px-4 rounded-md   w-full"
               onClick={handleSubmit}
             >
               Update Address

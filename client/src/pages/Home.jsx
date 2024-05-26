@@ -42,6 +42,11 @@ const faqs = [
       "Absolutely! If you're interested in hosting a sports event on our platform, reach out to us through our contact page or email us. We'd love to hear about your event idea!",
   },
 ];
+const [totalData, setTotalData] = useState([]);
+
+
+
+
 
   useEffect(() => {
     try {
@@ -99,7 +104,23 @@ const faqs = [
     }
 
   },[])
-
+ 
+  const[eventsData, setEventData] = useState([])
+  useEffect(() => {
+    try {
+      const fetchEvent = async () => {
+        const res = await fetch("/api/event/getEvent?limit=3");
+        const data = await res.json();
+        if (res.ok) {
+          setEventData(data);
+        }
+        console.log(data);
+      }
+    } catch (error) {
+      console.log('Error fetching total data:', error)
+      
+    }
+  })
 
   return (
     <div className="w-full">
@@ -220,40 +241,7 @@ const faqs = [
         </div>
       </section>
 
-      {/* Achievments Section */}
-      {/* <div className='flex flex-col gap-y-3 w-full my-4'>
-      <div className="mx-auto mb-14 max-w-2xl text-center">
-              <span className="mb-4 inline-block text-sky-700 px-3 py-1 md:text-sm text-xs    font-bold font-subheading_font">
-                OUR  ACHIEVEMENTS
-              </span>
-              <h1 className="lg:text-5xl md:text-4xl text-3xl px-2 lg:px-0 text-[#27374D] dark:text-[#DDE6ED] font-heading_font"> Discover Our Remarkable Achievements</h1>
-            </div>
-      <Circle/>
-    {events.map((event,key)=>{
-      return <Fragment key={key}>
-        <div className='grid grid-cols-[1fr_auto_1fr] gap-x-2 items-center mx-auto'>
-          { event.direction === 'left' ?( <Event year={event.year} title={event.title}/>) : (<div> </div>)}
-          <Pilars/>
-          { event.direction === 'right' ?( <Event year={event.year} title={event.title}/>) : (<div> </div>)}
-        </div>
-        {key <(events.length-1) && <Circle/>}
-      </Fragment>
-
-    })}
-      <Circle/>
-
-      <div className="mt-14 mb-8 text-center">
-              <Link to="/achievements">
-                <div className=" w-2/3 text-base flex mx-auto gap-4 justify-center lg:w-40 rounded-lg bg-sky-700 px-4 py-3 md:text-lg font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-              <button
-                type="button"
-                    >
-                Show More
-              </button>
-              </div>
-              </Link>
-            </div>
-    </div> */}
+      
 
 <section className="mx-auto max-w-7xl   px-2 py-10 md:px-0">
         <div>
@@ -302,6 +290,8 @@ const faqs = [
         </div>
       </section>
 
+      
+
 <section className="mt-16">
   <div className="mx-auto mb-14 max-w-2xl text-center">
     <span className="mb-4 inline-block text-yellow-400 px-3 py-1 md:text-sm text-xs font-bold font-subheading_font">
@@ -312,9 +302,7 @@ const faqs = [
     </h1>
   </div>
   <div className="flex flex-col justify-center">
-  <h2 className="my-40 mb-44 text-center font-extrabold text-3xl text-gray-600 font-body_font" style={{ transform: 'rotate(-10deg)' }}>
-    COMING SOON!!!!
-  </h2>
+  
 </div>
 
 </section>
@@ -323,27 +311,4 @@ const faqs = [
   );
 }
 
-const Circle =  () =>{
-  return(
-    <div className='rounded-full w-4 h-4 bg-sky-600 mx-auto'>
-
-    </div>
-  )
-}
-
-
-const Pilars =() =>{
-  return (<div className='rounded-t-full rounded-b-full mx-auto w-2  h-full bg-[#27374D] dark:bg-gray-400    '>
-
-  </div>)
-}
-
-const Event = ({ year, title }) => {
-  return (
-    <div className='transition duration-300 ease-in-out transform hover:translate-y-1 hover:shadow-2xl flex flex-col gap-y-2 border border-gray-200 shadow-md rounded-xl p-4 dark:glass-container mx-auto  bg-white dark:bg-[#131315] '>
-      <div className='text-sky-600 font-heading_font text-lg'>{year}</div>
-      <div className='text-gray-600 font-body_font text-base'>{title}</div>
-    </div>
-  );
-};
 export default Home;

@@ -14,9 +14,9 @@ function Footer() {
           <div className="mb-6 md:mb-0">
           <Link
             to="/"
-            className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
+            className={`whitespace-nowrap self-center font-logo_font text-black dark:text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
           >
-            <span className="px-2 py-1  dark:bg-[#364559] bg-[#27374D] text-[#DDE6ED] rounded-lg">
+            <span className="px-2 py-1  dark:bg-yellow-400 bg-yellow-400 text-[#DDE6ED] rounded-lg">
             CAMPUS
             </span>
             -Play

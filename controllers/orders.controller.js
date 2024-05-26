@@ -33,10 +33,6 @@ export const getOrder = asyncHandler(async (req, res, next) => {
                 .status(404)
                 .json(new apiResponse({}, "Order not found", 404));
         }
-
-       
-
-     
         return res
             .status(200)
             .json(new apiResponse(order, "Order fetched successfully", 200));
@@ -184,7 +180,7 @@ export const Totals = asyncHandler(async (req, res) => {
         const totalUser = await User.countDocuments();
         const totalOrder = await Order.countDocuments();
         const totalMenu = await Menu.countDocuments();
-        
+
         return res
         .status(200)
         .json(new apiResponse({totalUser,totalOrder,totalMenu}, "Total fetched successfully", 200));

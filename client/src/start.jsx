@@ -33,6 +33,7 @@ import EventSearch from "./pages/EventSearch.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import OrderStatus from "./pages/OrderStatus.jsx";
 import OrderDetails from "./pages/OrderDetails.jsx";
+import VerifyEmail from "./pages/Verifyemail.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path:"/termsCondition",
         element:<TermsAndConditions/>
+      },
+      {
+        path:"/verifyEmail",
+        element:<VerifyEmail/>
       },
       {
         path: "/events",

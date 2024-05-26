@@ -11,11 +11,15 @@ import { RxCross2 } from "react-icons/rx";
 import {useNavigate} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import { HiOutlineShoppingCart } from "react-icons/hi2";
+import { resetAddress } from "../../redux/function/addressSlice";
+import { resetCart } from "../../redux/function/cartSlice";
+
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const { currentTheme } = useSelector((state) => state.theme);
   const path = useLocation().pathname;
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("")
   const  [searchResults, setSearchResults] = useState([])
@@ -71,19 +75,26 @@ const navigate = useNavigate()
     setIsMenuOpen(!isMenuOpen);
   };
   const handleLogout = async () => {
+  
     try {
-      const res = await fetch(`/api/auth/logout`, {
+      
+      const res = await fetch("/api/auth/logout", {
         method: "POST",
       });
-      const data = await res.json();
+
       if (!res.ok) {
-        console.log(data.message);
-      } else {
-        dispatch(signOutSucess());
-        window.location.href = "/";
+        setError(error.message);
       }
+      dispatch(signOutSucess()),
+        dispatch(resetAddress()),
+        dispatch(resetCart()),
+        navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(error.message);
+      dispatch(signOutSucess()),
+        dispatch(resetAddress()),
+        dispatch(resetCart()),
+        navigate("/");
     }
   };
   const handleTheme = () => {
@@ -99,7 +110,7 @@ const navigate = useNavigate()
         <div className="inline-flex items-center space-x-2 ">
           <Link
             to="/"
-            className={`whitespace-nowrap self-center font-logo_font text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
+            className={`whitespace-nowrap self-center font-logo_font text-black dark:text-[#BFCDD9] text-sm sm:text-xl font-semibold`}
           >
             <span className="px-2 py-1  dark:bg-yellow-400 bg-yellow-400 text-[#DDE6ED] rounded-lg">
             CAMPUS

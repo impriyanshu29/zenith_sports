@@ -156,9 +156,6 @@ export const getAddress = asyncHandler(async (req, res) => {
         throw new apiError(404, "User not found");
     }
 
-    if (user.isVerified === false) {
-        return res.status(400).json(new apiResponse(400, "User is not verified"));
-    }
 
     try {
         const address = await Address.findOne({

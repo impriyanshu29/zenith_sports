@@ -29,7 +29,7 @@ function About() {
               <p className="max-w-4xl text-sm lg:text-base px-2 lg:px-0 text-center text-gray-500 md:text-xl">
               Welcome to Campus Play, where we unite the thrill of sports with the spirit of competition and camaraderie. Dive into a world of exhilarating events hosted across various colleges and universities. Participate in our meticulously organized sports tournaments, crafted to inspire athletes and sports enthusiasts alike. 
               </p>
-      <Link to ="/menu">
+      <Link to ="/items">
               <p className="text-sm text-center lg:text-center font-semibold md:text-base">
                Explore Now &rarr;
               </p>
