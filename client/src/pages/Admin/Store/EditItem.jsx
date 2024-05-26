@@ -156,7 +156,7 @@ function EditItem() {
       setTimeout(() => {
         setError(null);
         setsuccessMessage(null);
-        navigate(`/menu/${data.status.menu.slug}`)
+        navigate(`/items/${data.status.menu.slug}`)
       }, 4000);
     } catch (error) {
       setError(error.message);

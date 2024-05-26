@@ -273,7 +273,7 @@ function Store() {
               type="button"
               onClick={() => handleCategoryChange("Accessories")}
               className={`px-6 py-3 rounded-md ${
-                category === " Accessories"
+                category === "Accessories"
                   ? "bg-yellow-400 text-white"
                   : "bg-gray-200 text-gray-900"
               }`}
@@ -299,18 +299,18 @@ function Store() {
           {menus.map((me) => (
             <div
               key={me._id}
-              className=" border cursor-pointer mx-2   bg-gray-50  rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-1.02"
+              className=" border cursor-pointer mx-2    rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-1.02"
             >
               <Link to={`/items/${me.slug}`}>
                 <img
                   src={me.menuImage}
-                  className=" px-3   w-full rounded-md"
+                  className=" px-3 bg-gray-100 dark:bg-[#131315] py-3  w-full rounded-md"
                   alt="Menu Image"
                 />
               </Link>
               <div className="min-h-min ">
                 <Link to={`/items/${me.slug}`}>
-                  <p className="mt-4 flex-1 text-2xl font-bold pb-4 text-gray-900 text-center ">
+                  <p className="mt-4 flex-1 text-2xl font-bold pb-4 text-[#27374D] dark:text-[#DDE6ED] text-center ">
                     {me.menuName}
                   </p>
                   <p className=" text-gray-600 text-center px-4 w-full text-sm leading-normal ">

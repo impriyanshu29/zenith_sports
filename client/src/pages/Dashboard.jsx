@@ -17,6 +17,9 @@ import EditAchievements from '../components/Achievements/EditAchievements';
 import CreateItems from './Admin/Store/CreateItems';
 import UpdateItems from './Admin/Store/UpdateItems';
 import EditItem from './Admin/Store/EditItem';
+import Address from '../components/Dashboard/Address';
+import OrderList from './Admin/Order/OrderList';
+import OrderID from './Admin/Order/OrderId';
 
 function Dashboard() {
   const { currentUser } = useSelector((state) => state.user);
@@ -38,7 +41,7 @@ function Dashboard() {
   
  
   {tab === 'profile' && <Profile/>}
-  
+  {tab === 'address' && <Address/>}
   {currentUser.message.user.isAdmin && tab === 'createpost' && <CreatePost/>}
   {currentUser.message.user.isAdmin && tab === 'userlist' && <UserList/>}
   {currentUser.message.user.isAdmin && tab === 'updatepost' && <UpdatePost/>}
@@ -51,7 +54,8 @@ function Dashboard() {
 {currentUser.message.user.isAdmin && tab.startsWith('edit_achievement')&& tab.length > 'edit_achievement-'.length && <EditAchievements/>}
 {currentUser.message.user.isAdmin && tab === "createItems" && <CreateItems />}
 {currentUser.message.user.isAdmin && tab === "updateItems" && <UpdateItems />}
-
+{currentUser.message.user.isAdmin && tab === "updateOrder" && <OrderList/>}
+{currentUser.message.user.isAdmin && tab === "orderId" && <OrderID/>}
          
           {currentUser.message.user.isAdmin && tab.startsWith('editItem-')&& tab.length > 'editItem-'.length && <EditItem />} 
   </div>

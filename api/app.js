@@ -11,6 +11,8 @@ import menuRoute from '../routes/menu.routes.js'
 import cartRoute from '../routes/cart.routes.js'
 import whistListRouter from '../routes/whistList.routes.js'
 import path from 'path';
+import addressRoute from '../routes/address.routes.js'
+import paymentRoute from '../routes/payments.routes.js'
 
 const app = express()
 
@@ -19,6 +21,7 @@ app.use(express.json())
 app.use(cookieParser());
 app.use("/api/user",userRouter)
 app.use("/api/auth",authRouter)
+app.use('/api/add', addressRoute)
 app.use("/api/post",postRouter)
 app.use("/api/event",eventRouter)
 app.use("/api/list",userList)
@@ -27,6 +30,7 @@ app.use('/api/order', orderRoute);
 app.use('/api/menu', menuRoute);
 app.use('/api/cart', cartRoute);
 app.use('/api/whistList', whistListRouter);
+app.use('/api/payment', paymentRoute);
 
 
 app.use(express.static(path.join(__dirname, '/client/dist')));

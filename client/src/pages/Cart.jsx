@@ -293,7 +293,7 @@ const navigate = useNavigate();
                                       
                                     </span>
                                   ) : product.menuData.menuType === "E-Sports" ? (
-                                    <span className="text-sm font-semibold text-black flex items-center">
+                                    <span className="text-sm font-semibold text-teal-400  flex items-center">
                                    E-Sports
                                       
                                     </span>

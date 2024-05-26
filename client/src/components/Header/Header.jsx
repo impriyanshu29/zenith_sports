@@ -126,7 +126,7 @@ const navigate = useNavigate()
         <div className=" flex gap-2 space-x-2 ">
         <div className=" rounded-full p-3 my-auto">
             <Link className="relative" to="/cart">
-              <HiOutlineShoppingCart className="h-6 w-6 cursor-pointer" />
+              <HiOutlineShoppingCart className="h-6 w-6  dark:text-gray-200 cursor-pointer" />
               {totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#E52A3D] text-white text-xs rounded-full px-1 ">
                   {totalItems}
@@ -189,6 +189,15 @@ const navigate = useNavigate()
                       >
                         WhistList
                       </div>
+                    </Link>
+                    <Link to="/orderStatus">
+                      <div
+                        onClick={() => setShowDropdown(!showDropdown)}
+                        className="hover:bg-gray-300 border-t dark:border-gray-600 hover:text-gray-800 p-4 cursor-pointer"
+                      >
+                       My Order
+                      </div>
+
                     </Link>
                     {currentUser.message.user.isAdmin && (
                       <Link to="/dashboard?tab=updatepost">

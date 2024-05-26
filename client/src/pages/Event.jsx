@@ -24,7 +24,8 @@ const handleSearch = (e) =>{
       urlParams.set('searchEvent', searchValue)
      
       const search = urlParams.toString()
-      navigate(`/search?${search}`)
+      
+      navigate(`/eventSearch?${search}`)
   } catch (error) {
     console.log(error)
   }
@@ -121,14 +122,14 @@ const handleSearch = (e) =>{
                       Linkedin
                     </span>
                   </Link>
-                  <Link to ={`/search?batch=${post.batch}`}>
+                  <Link to ={`/search?eventCategory=${post.eventCategory}`}>
                   <span className="flex items-center mb-2 mr-2 rounded-full bg-gray-200 dark:bg-gray-400 text-gray-700    px-3 py-1 text-xs font-semibold ">
                     {post.eventCategory}
                   </span>
                   </Link>
                 </div>
 
-              <Link to={`/alumni/${post.slug}`}>
+              <Link to={`/events/${post.slug}`}>
                 <button
                   type="button"
                   className="mt-4 w-full rounded-sm  bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"

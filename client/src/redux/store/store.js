@@ -6,13 +6,14 @@ import storage from 'redux-persist/lib/storage'
 import themeReducer from '../function/themeSlice'
 
 import cartReducer from '../function/cartSlice'
-
+import addressReducer from '../function/addressSlice'
 
 
 const rootReducer = combineReducers({
     user:userReducer,
     theme:themeReducer,
-    cart : cartReducer
+    cart : cartReducer,
+    address : addressReducer
 });
 
 const persistConfig ={

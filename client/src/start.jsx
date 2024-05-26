@@ -29,6 +29,10 @@ import Contact from "./pages/Contact.jsx";
 import Cart from "./pages/Cart.jsx";
 import Items from "./pages/Items.jsx";
 import WhistList from "./pages/Whistlist.jsx";
+import EventSearch from "./pages/EventSearch.jsx";
+import Checkout from "./pages/Checkout.jsx";
+import OrderStatus from "./pages/OrderStatus.jsx";
+import OrderDetails from "./pages/OrderDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -82,6 +86,10 @@ const router = createBrowserRouter([
         element:<Search/>
       },
       {
+        path:"/eventSearch",
+        element:<EventSearch/>
+      },
+      {
         path:"/events/:eventSlug",
         element:<EventPage/>
       },
@@ -107,7 +115,7 @@ const router = createBrowserRouter([
           },
         ],
       },{
-        path: "/carts",
+        path: "/cart",
         element: <Private_Route />,
         children: [
           {
@@ -116,6 +124,38 @@ const router = createBrowserRouter([
           },
         ],
       },{
+        path: "/checkout/:orderId",
+        element: <Private_Route />,
+        children: [
+          {
+            index: true,
+            element: <Checkout />,
+          },
+        ],
+      },{
+        path: '/orderStatus',
+        element:<Private_Route/>,
+        children:[
+          {
+            index:true,
+            element:<OrderStatus/>
+          }
+        ]
+      
+      },{
+        path: '/orderDetails/:orderId',
+        element:<Private_Route/>,
+        children:[
+          {
+            index:true,
+            element:<OrderDetails/>
+          }
+        ]
+      
+      }
+      
+      
+      ,{
         path: "/items/:itemSlug",
         element: <Private_Route />,
         children: [

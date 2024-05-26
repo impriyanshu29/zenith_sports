@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
+
 import { FaBox } from "react-icons/fa6";
 import { FaBookReader } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -19,7 +20,7 @@ import { IoIosPeople } from "react-icons/io";
 import { MdEventAvailable } from "react-icons/md";
 import { FaMedal } from "react-icons/fa";
 import { GiMedallist } from "react-icons/gi";
-
+import { FiPackage } from "react-icons/fi";
 
 import { FaPencilRuler } from "react-icons/fa";
 
@@ -103,6 +104,16 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
             >
               <FaUser className="h-5 w-5" aria-hidden="true" />
               <span className="mx-2 text-sm font-medium">Profile</span>
+            </NavLink>
+            <NavLink
+              // also update in dashboard.jsx
+              to="/dashboard?tab=address"
+              className={`flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
+                tab === "address" ? "bg-gray-200 text-gray-800" : ""
+              }`}
+            >
+              <FaHome className="h-5 w-5" aria-hidden="true" />
+              <span className="mx-2 text-sm font-medium">Address</span>
             </NavLink>
 
             <div className={`flex transform  cursor-pointer items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
@@ -265,7 +276,19 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
               </div>
             ) : null}
 
-
+{currentUser.message.user.isAdmin && (
+               <NavLink
+               to="/dashboard?tab=updateOrder"
+               className={`flex transform items-center rounded-lg px-3 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 hover:underline ${
+                tab === "updateOrder"
+                  ? "bg-gray-200 text-gray-800"
+                  : ""
+               }`}
+             >
+               <FiPackage className="h-5 w-5 font-bold text-lg " aria-hidden="true" />
+               <span className="mx-3 text-base font-heading_font ">Update Order</span>
+             </NavLink>
+            )}
             {currentUser.message.user.isAdmin && (
                <NavLink
                to="/dashboard?tab=userlist"
@@ -279,6 +302,7 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                <span className="mx-3 text-base font-heading_font ">Members</span>
              </NavLink>
             )}
+            
             {!currentUser.message.user.isAdmin && (
               <NavLink
                 to="/"
@@ -290,6 +314,7 @@ const[showDropDownAchievements,setShowDropdownAchievements] = useState(false)
                 <span className="mx-2 text-sm font-medium">Home</span>
               </NavLink>
             )}
+            
             {!currentUser.message.user.isAdmin && (
               <NavLink
                 to="/about"

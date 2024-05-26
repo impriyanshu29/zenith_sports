@@ -49,7 +49,8 @@ export const getEvent = asyncHandler(async (req, res, next) => {
   if (req.query.startIndex) {
     startIndex = parseInt(req.query.startIndex);
   }
-
+  const searchValue = req.query.searchEvent;
+ 
   const sortDirection = req.query.order === "asc" ? 1 : -1;
   const events = await Event.find({
     ...(req.query.eventId && { _id: req.query.eventId }),
@@ -57,9 +58,9 @@ export const getEvent = asyncHandler(async (req, res, next) => {
     ...(req.query.eventCategory && {eventCategory: req.query.eventCategory }),
     ...(req.query.searchEvent && {
       $or: [
-        { eventName: { $regex: req.query.searchAlumni, $options: "i" } },
-        { eventCategory: { $regex: req.query.searchAlumni, $options: "i" } },
-        { eventOrganizer: { $regex: req.query.searchAlumni, $options: "i" } },
+        { eventName: { $regex: req.query.searchEvent, $options: "i" } },
+        { eventCategory: { $regex: req.query.searchEvent, $options: "i" } },
+        { eventOrganizer: { $regex: req.query.searchEvent, $options: "i" } },
       ],
     }),
   })
