@@ -162,7 +162,7 @@ const navigate = useNavigate()
                 <img
                   onClick={() => setShowDropdown(!showDropdown)}
                   className="h-12 m-2 w-12 rounded-full border border-gray-200 dark:border-gray-900 cursor-pointer"
-                  src={currentUser.message.user.coverImage}
+                  src={currentUser?.message?.user?.coverImage}
                   alt="User_Profile"
                 />
                 {showDropdown && (
@@ -171,7 +171,7 @@ const navigate = useNavigate()
                       <div className=" h-12 w-12 rounded-full mr-2">
                         <img
                           alt="User"
-                          src={currentUser.message.user.coverImage}
+                          src={currentUser?.message?.user?.coverImage}
                           className="h-12 w-12 rounded-full mr-2"
                         />
                       </div>

@@ -39,6 +39,13 @@ const userSchema = new Schema({
         type:Boolean,
         default:false,
     },
+      // forgot password token and expire
+      forgotPasswordToken: String,
+      forgotPasswordExpire: Date,
+  
+      // verify email token and expire
+      verifyToken: String,
+      verifyTokenExpire: Date,
 },{timestamps:true});
 
 
