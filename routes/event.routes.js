@@ -5,7 +5,7 @@ import { createEvent, getEvent,deleteEvent,updateEvent, oneEvent } from '../cont
 const router = Router()
 
 router.post('/createEvent', verifyJWT, createEvent)
-router.get('/getEvent', verifyJWT, getEvent)
+router.get('/getEvent', getEvent)
 router.delete('/deleteEvent/:userId/:eventId',verifyJWT, deleteEvent)
 router.patch('/updateEvent/:userId/:eventId',verifyJWT, updateEvent)
 router.get('/oneEvent/:eventId',oneEvent)

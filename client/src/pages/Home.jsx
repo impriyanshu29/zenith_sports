@@ -325,7 +325,13 @@ function Home() {
             </div>
           ))}
         </div>
-        
+        <div className="mt-8 text-center">
+              <Link to="/events">
+                <div className="mt-12 w-2/3 text-base flex mx-auto gap-4 justify-center lg:w-40 rounded-lg bg-yellow-400 px-4 py-3 md:text-lg font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                  <button type="button">View All Events</button>
+                </div>
+              </Link>
+            </div>
       </section>
     </div>
   );
